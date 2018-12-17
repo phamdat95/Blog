@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .size{
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<h1>Create user</h1>
+<p>
+    <a th:href="@{/blog/list}">Back to list</a>
+</p>
+<p th:if="${message != null}">
+    <span th:text="${message}"></span>
+</p>
+<fieldset>
+    <legend>Fill information</legend>
+    <form action="#" th:action="@{/blog/create}" method="post" novalidate="novalidate" th:object="${user}">
+        <input type="hidden" th:field="*{id}">
+        <div><label>Name: </label></div>
+        <input type="text" th:field="*{name}">
+        <div><label>Email: </label></div>
+        <input type="email" th:field="*{email}">
+        <div><label>Content: </label></div>
+        <textarea class="size" th:field="*{type}"></textarea>
+        <div><input type="submit" value="Create"></div>
+    </form>
+</fieldset>
+</body>
+</html>

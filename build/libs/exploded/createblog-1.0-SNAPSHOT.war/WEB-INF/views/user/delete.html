@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Delete <a th:text="${user.name}"></a>'blog</h1>
+<p th:if="${message}">
+    <span th:text="${message}"></span>
+</p>
+<fieldset>
+    <legend>Information user</legend>
+    <h3>Are you sure?</h3>
+    <form action="#" method="post" th:action="@{/blog/delete}" th:object="${user}" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}">
+    <div>Name</div>
+    <div><a th:field="*{name}" th:text="${user.name}"></a></div>
+    <div>Email: </div>
+    <div><a th:field="*{email}" th:text="${user.email}"></a></div>
+    <div>Content blog: </div>
+    <div><a th:field="*{type}" th:text="${user.type}"></a></div>
+    <div><button type="submit">Delete</button></div>
+    </form>
+    <div class="size"><a th:href="@{/blog/list}">Back to list!</a></div>
+</fieldset>
+</body>
+</html>
